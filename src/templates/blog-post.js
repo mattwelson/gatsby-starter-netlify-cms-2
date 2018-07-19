@@ -19,7 +19,7 @@ export const BlogPostTemplate = ({
 }) => {
   const PostContent = contentComponent || Content
 
-  if (window) {
+  if (typeof window !== 'undefined') {
     const images = document.querySelectorAll('.gatsby-resp-image-image')
     images.forEach(img => {
       if (img.complete) {
