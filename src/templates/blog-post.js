@@ -5,15 +5,30 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
 
+const setFlex = img => {
+  // set flex = img.width / img.height on .gatsby-resp-image-link parent somehow?
+}
+
 export const BlogPostTemplate = ({
   content,
   contentComponent,
   description,
   tags,
   title,
-  helmet,
+  helmet
 }) => {
   const PostContent = contentComponent || Content
+
+  if (window) {
+    const images = document.querySelectorAll('.gatsby-resp-image-image')
+    images.forEach(img => {
+      if (img.complete) {
+        setFlex(img)
+      } else {
+        img.addEventListener('load', setFlex)
+      }
+    })
+  }
 
   return (
     <section className="section">
@@ -50,7 +65,7 @@ BlogPostTemplate.propTypes = {
   contentComponent: PropTypes.func,
   description: PropTypes.string,
   title: PropTypes.string,
-  helmet: PropTypes.instanceOf(Helmet),
+  helmet: PropTypes.instanceOf(Helmet)
 }
 
 const BlogPost = ({ data }) => {
@@ -70,8 +85,8 @@ const BlogPost = ({ data }) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
+    markdownRemark: PropTypes.object
+  })
 }
 
 export default BlogPost
