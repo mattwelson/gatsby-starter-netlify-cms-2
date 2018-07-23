@@ -46,7 +46,7 @@ module.exports = {
         plugins: [
           'gatsby-remark-relative-images',
           {
-            resolve: `gatsby-remark-images`,
+            resolve: `gatsby-remark-images-flex`,
             options: {
               // It's important to specify the maxWidth (in pixels) of
               // the content container as this plugin uses this as the
