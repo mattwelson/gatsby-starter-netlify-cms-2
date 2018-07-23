@@ -12,6 +12,7 @@
     "gatsby-plugin-react-helmet": "^2.0.5",
     "gatsby-plugin-sass": "^1.0.26",
     "gatsby-plugin-sharp": "^1.6.48",
+    "gatsby-remark-attr": "0.0.1",
     "gatsby-remark-custom-blocks": "^1.0.5",
     "gatsby-remark-images": "^1.5.67",
     "gatsby-remark-relative-images": "^0.1.2",

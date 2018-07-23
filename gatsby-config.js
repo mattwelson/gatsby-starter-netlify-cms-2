@@ -44,6 +44,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          'gatsby-remark-attr',
           'gatsby-remark-relative-images',
           {
             resolve: `gatsby-remark-images-flex`,
@@ -58,7 +59,7 @@ module.exports = {
             resolve: 'gatsby-remark-custom-blocks',
             options: {
               blocks: {
-                danger: 'custom-block-danger',
+                line: 'custom-block-line',
                 info: 'custom-block-info'
               }
             }

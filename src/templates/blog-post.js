@@ -5,10 +5,6 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
 
-const setFlex = img => {
-  // set flex = img.width / img.height on .gatsby-resp-image-link parent somehow?
-}
-
 export const BlogPostTemplate = ({
   content,
   contentComponent,
@@ -18,17 +14,6 @@ export const BlogPostTemplate = ({
   helmet
 }) => {
   const PostContent = contentComponent || Content
-
-  if (typeof window !== 'undefined') {
-    const images = document.querySelectorAll('.gatsby-resp-image-image')
-    images.forEach(img => {
-      if (img.complete) {
-        setFlex(img)
-      } else {
-        img.addEventListener('load', setFlex)
-      }
-    })
-  }
 
   return (
     <section className="section">
