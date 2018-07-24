@@ -7,6 +7,10 @@ import './all.sass'
 
 const TemplateWrapper = ({ children }) => (
   <div>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:500,600,700,800"
+      rel="stylesheet"
+    />
     <Helmet title="Home | Gatsby + Netlify CMS" />
     <Navbar />
     <div>{children()}</div>
@@ -14,7 +18,7 @@ const TemplateWrapper = ({ children }) => (
 )
 
 TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.func
 }
 
 export default TemplateWrapper

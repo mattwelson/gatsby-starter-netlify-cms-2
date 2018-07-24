@@ -4,6 +4,8 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-netlify-cache',
     'gatsby-plugin-sass',
     {
       resolve: 'gatsby-source-filesystem',

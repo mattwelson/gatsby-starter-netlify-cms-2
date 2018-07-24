@@ -1,41 +1,32 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+import aperture from '../img/aperture.png'
+import user from '../img/user.png'
 
 const Navbar = () => (
-  <nav className="navbar is-transparent">
-    <div className="container">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          <figure className="image">
-            <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-          </figure>
-        </Link>
-      </div>
-      <div className="navbar-start">
-        <Link className="navbar-item" to="/about">
-          About
-        </Link>
-        <Link className="navbar-item" to="/products">
-          Products
-        </Link>
-      </div>
-      <div className="navbar-end">
-        <a
-          className="navbar-item"
-          href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">
-            <img src={github} alt="Github" />
-          </span>
+  <header className="header" role="banner">
+    <div className="wrapper">
+      <a href="/" className="font--logo">
+        <h1 className="header__title">CODIE WESTPHALL</h1>
+      </a>
+
+      <div className="header__right">
+        <a href="/gear/" className="header__icon">
+          <img src={aperture} alt="gear" style={{ width: 30, height: 30 }} />
+          <div className="header__tooltip">
+            <div>My Gear</div>
+          </div>
+        </a>
+        <a href="/about/" className="header__icon">
+          <img src={user} alt="about me" style={{ width: 30, height: 30 }} />
+          <div className="header__tooltip">
+            <div>About Me</div>
+          </div>
         </a>
       </div>
     </div>
-  </nav>
+  </header>
 )
 
 export default Navbar
