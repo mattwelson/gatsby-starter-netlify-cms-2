@@ -18,8 +18,8 @@ collections:
       - {label: "Display Title", name: "displayTitle", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Location", name: "location", widget: "string"}
-      - label: "Parent"
-        name: "parent"
+      - label: "Parent trip"
+        name: "parentTrip"
         required: false
         collection: "trips"
         widget: relation

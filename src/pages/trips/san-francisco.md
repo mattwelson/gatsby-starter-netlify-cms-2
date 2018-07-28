@@ -5,6 +5,7 @@ displayTitle: San Francisco
 date: '2018-07-28T12:04:38+12:00'
 image: /img/jumbotron.jpg
 location: 'California, USA'
+published: true
 meta:
   - text: Days
     value: '27'

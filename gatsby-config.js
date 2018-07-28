@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Codie Westphall',
-    twitter: 'https://'
+    twitter: 'https://twitter.com/codie1991'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -71,5 +71,9 @@ module.exports = {
       }
     },
     'gatsby-plugin-netlify' // make sure to keep it last in the array
-  ]
+  ],
+  mapping: {
+    'MarkdownRemark.fields.parentTrip': 'MarkdownRemark',
+    'MarkdownRemark.fields.childTrips': 'MarkdownRemark'
+  }
 }

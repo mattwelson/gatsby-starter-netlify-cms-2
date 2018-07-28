@@ -40,8 +40,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         ),
         // additional data can be passed via context
         context: {
-          id,
-        },
+          id
+        }
       })
     })
 
@@ -64,8 +64,8 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         path: tagPath,
         component: path.resolve(`src/templates/tags.js`),
         context: {
-          tag,
-        },
+          tag
+        }
       })
     })
   })
@@ -79,7 +79,48 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value
     })
   }
+}
+
+exports.sourceNodes = ({ boundActionCreators, getNodes, getNode }) => {
+  const { createNodeField } = boundActionCreators
+
+  const parents = {}
+  // iterate thorugh all markdown nodes to link children
+  const markdownNodes = getNodes()
+    .filter(node => node.internal.type === 'MarkdownRemark')
+    .forEach(node => {
+      if (node.frontmatter.parentTrip) {
+        const parentNode = getNodes().find(
+          node2 =>
+            node2.internal.type === 'MarkdownRemark' &&
+            node2.frontmatter.title === node.frontmatter.parentTrip
+        )
+
+        if (parentNode) {
+          createNodeField({
+            node,
+            name: 'parentTrip',
+            value: parentNode.id
+          })
+
+          // if it's first time for this author init empty array for his posts
+          if (!(parentNode.id in parents)) {
+            parents[parentNode.id] = []
+          }
+          // add book to this author
+          parents[parentNode.id].push(node.id)
+        }
+      }
+    })
+
+  Object.entries(parents).forEach(([parentNode, childId]) => {
+    createNodeField({
+      node: getNode(parentNode),
+      name: 'childTrips',
+      value: childId
+    })
+  })
 }

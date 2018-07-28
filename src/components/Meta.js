@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Meta = ({ meta, className }) =>
-  meta.length && (
+  meta && (
     <div className={`meta ${className}`}>
       {meta.map(m => (
-        <div className="meta__item">
+        <div className="meta__item" key={m.text}>
           <div className="meta__value">{m.value}</div>
           {m.image && (
             <div className="meta__image">
@@ -22,7 +22,7 @@ Meta.propTypes = {
   classNames: PropTypes.string,
   meta: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
       image: PropTypes.string
     })
