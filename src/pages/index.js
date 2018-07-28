@@ -10,14 +10,10 @@ export default class IndexPage extends React.Component {
     return (
       <section className="section">
         <div className="content">
-          <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
+          <h1>Latest Stories</h1>
 
           {posts.map(({ node: post }) => (
-            <div
-              className="content"
-              style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-              key={post.id}
-            >
+            <div key={post.id}>
               <p>
                 <Link className="has-text-primary" to={post.fields.slug}>
                   {post.frontmatter.title}
