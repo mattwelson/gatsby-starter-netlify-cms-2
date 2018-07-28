@@ -21,6 +21,7 @@ collections:
         name: "parent"
         required: false
         collection: "trips"
+        widget: relation
         displayFields: ["displayTitle", "title", "date"]
         searchFields: ["displayTitle", "date"]
         valueField: "title"
