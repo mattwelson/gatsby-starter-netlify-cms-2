@@ -1,25 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Content, { HTMLContent } from '../components/Content'
+import Meta from '../components/Meta'
 
-export const TripTemplate = ({ title, content, contentComponent }) => {
+export const TripTemplate = ({
+  title,
+  content,
+  contentComponent,
+  description,
+  meta,
+  image,
+  location
+}) => {
   const TripContent = contentComponent || Content
 
   return (
-    <section className="section section--gradient content">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <TripContent content={content} />
-            </div>
+    <article className="content no-pad">
+      <div className="trip">
+        <div className="trip__header">
+          <div className="trip__image">
+            <img role="presentational" src={image} />
           </div>
+          <h2 className="trip__location">{location}</h2>
+          <h1 className="trip__title">{title}</h1>
+          <Meta meta={meta} className="trip__meta" />
         </div>
+        <p className="trip__description">{description}</p>
+        <TripContent content={content} />
       </div>
-    </section>
+    </article>
   )
 }
 
@@ -36,7 +45,11 @@ const Trip = ({ data }) => {
     <TripTemplate
       contentComponent={HTMLContent}
       title={post.frontmatter.title}
+      description={post.frontmatter.description}
+      meta={post.frontmatter.meta}
       content={post.html}
+      image={post.frontmatter.image}
+      location={post.frontmatter.location}
     />
   )
 }
@@ -53,6 +66,13 @@ export const TripQuery = graphql`
       html
       frontmatter {
         title
+        image
+        description
+        location
+        meta {
+          text
+          value
+        }
       }
     }
   }

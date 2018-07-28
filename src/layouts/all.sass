@@ -7,11 +7,13 @@ $color-dark: #1d2124
 
 $spacing-unit:     1.5em !default
 
+$opacity-subtle: 0.6
+
 @mixin transition($property, $time: 0.2s)
   transition: ease-in-out $time $property
 
 
-@import 'library/reset', 'layout/typography', 'layout/header'
+@import 'library/reset', 'layout/typography', 'layout/header', 'templates/trip', 'components/meta'
 
 .custom-block-line p
   display: flex
@@ -20,3 +22,6 @@ $spacing-unit:     1.5em !default
   a
     width: 100%
     flex: 1
+
+  img
+    padding: 0.5em
